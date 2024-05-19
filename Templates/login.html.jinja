@@ -1,0 +1,22 @@
+{% extends "base.html.jinja" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h2>Login</h2>
+    <form method="POST" action="/login">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        
+        <input type="submit" value="Login">
+    </form>
+    {% if mensaje %}
+        <p class="message">{{ mensaje }}</p>
+    {% endif %}
+</div>
+{% endblock %}
+

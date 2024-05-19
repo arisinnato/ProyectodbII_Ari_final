@@ -1,0 +1,39 @@
+{% extends "base2.html.jinja" %}
+
+{% block title %}Lista de Exámenes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Lista de Exámenes</h1>
+    <a href="{{ url_for('crear_examen') }}"><button>Crear</button></a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Precio (Bs)</th>
+                <th>Categoría</th>
+                <th>Tipo de Muestra</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for examen in examenes %}
+            <tr>
+                <td>{{ examen.codigo }}</td>
+                <td>{{ examen.nombre }}</td>
+                <td>{{ examen.precio }}</td>
+                <td>{{ examen.categoria }}</td>
+                <td>{{ examen.tipo_muestra }}</td>
+                <td class="actions">
+                    <a href="/examenes/consultar_examen">Consultar</a>
+                    <a href="/examenes/modificar_examen/modificar">Modificar</a>
+                    <a href="/examenes/eliminar_examen/eliminar">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

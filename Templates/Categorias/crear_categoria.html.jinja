@@ -1,0 +1,18 @@
+{% extends "base2.html.jinja" %}
+
+{% block title %}Crear Categoría{% endblock %}
+
+{% block content %}
+<div class="add">
+    <h1>Crear Categoría</h1>
+    <form method="POST" action="/crear_categoria">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea><br>
+        
+        <input type="submit" value="Crear">
+    </form>
+</div>
+{% endblock %}

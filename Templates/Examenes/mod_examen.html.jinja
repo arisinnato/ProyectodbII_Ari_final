@@ -1,0 +1,39 @@
+{% extends "base2.html.jinja" %}
+
+{% block title %}Modificar Examen{% endblock %}
+
+{% block content %}
+<div class="add">
+    <h1>Modificar Examen</h1>
+    <form method="POST" action="/modificar_examen/{{ examen._id }}">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo" value="{{ examen.codigo }}" required><br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ examen.nombre }}" required><br>
+
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria" required>
+            {% for categoria in categorias %}
+                <option value="{{ categoria }}" {% if examen.categoria == categoria %}selected{% endif %}>{{ categoria }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="tipo_muestra">Tipo de Muestra:</label>
+        <input type="text" id="tipo_muestra" name="tipo_muestra" value="{{ examen.tipo_muestra }}" required><br>
+
+        <label for="precio">Precio (Bs):</label>
+        <input type="number" id="precio" name="precio" value="{{ examen.precio }}" required><br>
+
+        <label for="indicaciones">Indicaciones:</label>
+        <select id="indicaciones" name="indicaciones">
+            {% for indicacion in indicaciones %}
+                <option value="{{ indicacion }}" {% if indicacion in examen.indicaciones %}selected{% endif %}>{{ indicacion }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" id="nueva_indicacion" name="nueva_indicacion" placeholder="Nueva indicación (opcional)"><br>
+
+        <input type="submit" value="Modificar">
+    </form>
+</div>
+{% endblock %}

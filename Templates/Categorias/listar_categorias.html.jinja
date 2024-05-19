@@ -1,0 +1,37 @@
+{% extends 'base2.html.jinja' %} {% block content %}
+
+<h1 class="listar">{% block title %} Categorias {% endblock %}</h1>
+
+{% if username != "" or username == None %}
+<a href="/crear_categoria" class="pure-button pure-button-primary">
+    <i class="fa-solid fa-plus"></i>  &nbsp; Agregar categoria </a>
+{% endif %}
+
+<table class="pure-table pure-table-horizontal pure-table-striped">
+    <thead>
+        <tr>
+            <th>Category name</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for Categorias in categorialist %}
+        <tr>
+            <td>{{ Categorias["nombre"] }}</td>
+
+            {% if username != "" or username == None %}
+            <td><a href="/categoria/{{ Categorias['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a> 
+                <a href="/categoria/modificar_categoria/{{ Categorias['_id'] }}" class="pure-button"><i class="fa-solid fa-pen-to-square"></i></a> 
+                <a href="/categoria/eliminar_categoria/{{ Categorias['_id'] }}" class="pure-button"><i class="fa-solid fa-trash"></i></a></td>
+
+            {% else %}
+            <td><p>Log in for options</p></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base2.html.jinja" %}
+
+{% block title %}Consultar Catálogo{% endblock %}
+
+{% block content %}
+<div class="add">
+    <h1>Consultar Catálogo</h1>
+    <form method="GET" action="/consultar_catalogo">
+        <label for="categoria">Categoría:</label>
+        <select id="categoria" name="categoria">
+            <option value="">Todas</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria }}">{{ categoria }}</option>
+            {% endfor %}
+        </select>
+        <label for="tipo_muestra">Tipo de Muestra:</label>
+        <select id="tipo_muestra" name="tipo_muestra">
+            <option value="">Todas</option>
+            {% for muestra in tipos_muestra %}
+                <option value="{{ muestra }}">{{ muestra }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        {% for examen in examenes %}
+            <tr>
+                <td>{{ examen.codigo }}</td>
+                <td>{{ examen.nombre }}</td>
+                <td>{{ examen.precio }}</td>
+                <td>
+                    <a href="/consultar_examen/{{ examen._id }}">Consultar</a>
+                    <a href="/modificar_examen/{{ examen._id }}">Modificar</a>
+                    <a href="/eliminar_examen/{{ examen._id }}">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

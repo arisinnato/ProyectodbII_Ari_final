@@ -1,0 +1,13 @@
+{% extends "base.html.jinja" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h2>Home</h2>
+    
+    {% if mensaje %}
+        <p class="message">{{ mensaje }}</p>
+    {% endif %}
+</div>
+{% endblock %}

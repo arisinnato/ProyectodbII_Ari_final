@@ -1,0 +1,18 @@
+{% extends "base2.html.jinja" %}
+
+{% block title %}Modificar Categoría{% endblock %}
+
+{% block content %}
+<div class="add">
+    <h1>Modificar Categoría</h1>
+    <form method="POST" action="/modificar_categoria/{{ categoria._id }}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ categoria.nombre }}" required><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required>{{ categoria.descripcion }}</textarea><br>
+
+        <input type="submit" value="Modificar">
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Ver Reporte{% endblock %}
+
+{% block content %}
+<div class="add">
+    <h1>Reporte de Exámenes</h1>
+
+    <h2>Cantidad de Exámenes por Categoría:</h2>
+    <table border="1" class="table">
+        <tr>
+            <th>Categoría</th>
+            <th>Cantidad de Exámenes</th>
+        </tr>
+        {% for categoria, cantidad in cantidad_por_categoria.items() %}
+            <tr>
+                <td>{{ categoria }}</td>
+                <td>{{ cantidad }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Indicación de Examen más Común:</h2>
+    <p>{{ indicacion_mas_comun }}</p>
+
+    <h2>Lista de Exámenes por Precio:</h2>
+    <table border="1">
+        <tr>
+            <th>Intervalo de Precio</th>
+            <th>Cantidad de Exámenes</th>
+        </tr>
+        {% for intervalo, cantidad in cantidad_por_intervalo.items() %}
+            <tr>
+                <td>{{ intervalo }}</td>
+                <td>{{ cantidad }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

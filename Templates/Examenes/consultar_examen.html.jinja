@@ -1,0 +1,47 @@
+{% extends "base2.html.jinja" %}
+    
+{% block title %}Consultar Examen{% endblock %}
+    
+{% block content %}
+    <h1>Consultar Examen</h1>
+    <table border="1">
+        <tr>
+            <th>Código</th>
+            <td>{{ examen.codigo }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ examen.nombre }}</td>
+        </tr>
+        <tr>
+            <th>Precio</th>
+            <td>{{ examen.precio }}</td>
+        </tr>
+        <tr>
+            <th>Categoría</th>
+            <td>{{ examen.categoria }}</td>
+        </tr>
+        <tr>
+            <th>Tipo de Muestra</th>
+            <td>{{ examen.tipo_muestra }}</td>
+        </tr>
+        <tr>
+            <th>Indicaciones</th>
+            <td>
+                <ul>
+                    {% for indicacion in examen.indicaciones %}
+                        <li>{{ indicacion }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+    <a href="/consultar_catalogo">Volver al Catálogo</a>
+    <ul>
+        {% for indicacion in examen.indicaciones %}
+            <li>{{ indicacion }}</li>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}
+
